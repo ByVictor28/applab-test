@@ -2,7 +2,7 @@
 /* 
 green secondary: rgba(79, 185, 187, 1)
  */
-.qw {
+/* .qw {
   border: 1px, solid, red;
 }
 .as {
@@ -11,7 +11,7 @@ green secondary: rgba(79, 185, 187, 1)
 .zx {
   border: 1px, solid, green;
 }
-
+ */
 html {
   /* 1rem = 10px */
   font-size: 62.5%;
