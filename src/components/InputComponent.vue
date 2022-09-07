@@ -1,20 +1,18 @@
 <template>
   <div class="select">
     <label>{{ label }}</label>
-    <select :name="label" id="">
-      <option value="" selected>
-        {{ label }}
-      </option>
+    <!-- <select :name="label" id="">
       <option v-for="option in options" :key="option" :value="option">
         {{ option }}
       </option>
-    </select>
+    </select> -->
+    <input type="text" :placeholder="label" v-model="value" />
   </div>
 </template>
 
 <script>
 export default {
-  props: ["label", "options"],
+  props: ["label", "options", "value"],
 };
 </script>
 
@@ -32,11 +30,12 @@ export default {
   background: white;
   padding: 0 1rem;
 }
-.select select {
+.select input {
   display: block;
   width: 100%;
   padding: 1.5rem 2rem;
   font-size: 1.8rem;
   border-radius: 1rem;
+  border: 1px solid gray;
 }
 </style>

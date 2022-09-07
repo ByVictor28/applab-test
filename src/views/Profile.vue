@@ -32,7 +32,12 @@
       </div>
 
       <hr />
-      <button class="button-solid">Editar administrador</button>
+      <button
+        class="button-solid"
+        @click="$router.push({ name: 'CreateAdmin', params: { id: 1 } })"
+      >
+        Editar administrador
+      </button>
     </div>
   </div>
 </template>
@@ -72,5 +77,13 @@ label {
 hr {
   border-top: 1px solid gainsboro;
   margin: 2rem 0;
+}
+
+@media only screen and (max-width: 768px) {
+  .data {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 2rem;
+  }
 }
 </style>

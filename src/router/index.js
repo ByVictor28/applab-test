@@ -3,6 +3,7 @@ import VueRouter from "vue-router";
 import Home from "../views/Admin.vue";
 import Profile from "../views/Profile.vue";
 import WorkingOnIt from "../views/WorkingOnIt.vue";
+import CreateAdmin from "../views/CreateAdmin.vue";
 
 Vue.use(VueRouter);
 
@@ -18,9 +19,14 @@ const routes = [
     component: Profile,
   },
   {
-    path: "/working-Catálogos",
-    name: "Working-Catálogos",
-    component: WorkingOnIt,
+    path: "/form/:id",
+    name: "CreateAdmin",
+    component: CreateAdmin,
+    props: (route) => {
+      return {
+        id: route.params.id,
+      };
+    },
   },
   {
     path: "/working-Usuarios",

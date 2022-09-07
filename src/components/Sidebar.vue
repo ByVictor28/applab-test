@@ -19,7 +19,11 @@
           />
         </svg>
       </SidebarLinkComponent>
-      <SidebarLinkComponent direction="Working-Catálogos" :name="'Catálogos'">
+      <SidebarLinkComponent
+        direction="CreateAdmin"
+        :name="'Catálogos'"
+        :params="{ id: 'new' }"
+      >
         <svg
           width="12"
           height="12"
@@ -262,13 +266,13 @@ export default {
 .sidebar {
   background: white;
   min-width: 25rem;
-  height: 100vh;
   border: 1px solid rgba(232, 234, 240, 1);
   display: flex;
   flex-direction: column;
   padding-bottom: 1rem;
   position: relative;
   transition: left 1s ease;
+  min-height: 100vh;
 }
 .logo {
   display: flex;

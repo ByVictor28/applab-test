@@ -1,6 +1,6 @@
 <template>
   <div class="box">
-    <router-link :to="{ name: direction }">
+    <router-link :to="{ name: direction, params: { ...params } }">
       <slot></slot>
       <span> {{ name }}</span>
     </router-link>
@@ -16,6 +16,9 @@ export default {
     direction: {
       required: true,
       type: String,
+    },
+    params: {
+      type: Object,
     },
     name: {
       required: true,
