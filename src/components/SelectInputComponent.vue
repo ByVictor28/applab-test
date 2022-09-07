@@ -1,11 +1,13 @@
 <template>
   <div class="select">
     <label>{{ label }}</label>
-    <select :name="label" id="">
-      <option value="" selected>
-        {{ label }}
-      </option>
-      <option v-for="option in options" :key="option" :value="option">
+    <select v-bind:value="value" v-on:change="emitChange($event.target.value)">
+      <option
+        v-for="option in options"
+        :key="option"
+        :value="option"
+        :selected="value === option"
+      >
         {{ option }}
       </option>
     </select>
@@ -14,7 +16,12 @@
 
 <script>
 export default {
-  props: ["label", "options"],
+  props: ["label", "options", "value"],
+  methods: {
+    emitChange(e) {
+      this.$emit("change", e);
+    },
+  },
 };
 </script>
 

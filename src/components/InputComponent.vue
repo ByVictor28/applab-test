@@ -6,13 +6,23 @@
         {{ option }}
       </option>
     </select> -->
-    <input type="text" :placeholder="label" v-model="value" />
+    <input
+      type="text"
+      :placeholder="label"
+      v-bind:value="value"
+      v-on:input="emitChange($event.target.value)"
+    />
   </div>
 </template>
 
 <script>
 export default {
   props: ["label", "options", "value"],
+  methods: {
+    emitChange(e) {
+      this.$emit("change", e);
+    },
+  },
 };
 </script>
 

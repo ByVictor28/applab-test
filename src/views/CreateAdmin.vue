@@ -3,7 +3,7 @@
     <h2>Agregar administrador</h2>
     <div class="content">
       <p>Sube tu fotografía con un peso menor a 2MB</p>
-      <div class="droop">
+      <div class="droop" v-if="!userData.image">
         <svg
           width="52"
           height="52"
@@ -33,19 +33,56 @@
         <p>Arrastra tu archivo o</p>
         <button class="button-outline">Selecciona</button>
       </div>
+      <div class="image" v-else>
+        <img :src="require(`@/assets/images/${userData.image}.png`)" alt="" />
+      </div>
       <form>
-        <InputComponent label="Nombres (s)" :value="userData.name" />
-        <InputComponent label="Apellidos" :value="userData.lastName" />
-        <InputComponent label="Correo electrónico" :value="userData.email" />
+        <InputComponent
+          label="Nombres (s)"
+          :value="userData.name"
+          @change="
+            (e) => {
+              userData.name = e;
+            }
+          "
+        />
+        <InputComponent
+          label="Apellidos"
+          :value="userData.lastName"
+          @change="
+            (e) => {
+              userData.lastName = e;
+            }
+          "
+        />
+        <InputComponent
+          label="Correo electrónico"
+          :value="userData.email"
+          @change="
+            (e) => {
+              userData.email = e;
+            }
+          "
+        />
         <SelectInputComponent
           label="Área"
-          :options="['select']"
+          :options="['Recursos humanos', 'Desarrollo']"
           :value="userData.area"
+          @change="
+            (e) => {
+              userData.area = e;
+            }
+          "
         />
         <SelectInputComponent
           label="Estatus"
-          :options="['select']"
+          :options="['Activo', 'Inactivo']"
           :value="userData.status"
+          @change="
+            (e) => {
+              userData.status = e;
+            }
+          "
         />
       </form>
       <hr />
@@ -54,7 +91,6 @@
         <button class="button-solid">Agregar administrador</button>
       </div>
     </div>
-    {{ id }}
   </div>
 </template>
 
@@ -74,6 +110,7 @@ export default {
   data() {
     return {
       userData: {
+        image: null,
         name: "",
         lastName: "",
         email: "",
@@ -86,10 +123,11 @@ export default {
     loadUserData() {
       if (this.id !== "new") {
         this.userData = {
+          image: "user_7",
           name: "Juan",
           lastName: "López",
           email: "correo@gmail.com",
-          area: "Recursos Humanos",
+          area: "Recursos humanos",
           status: "Activo",
         };
       }
@@ -132,7 +170,12 @@ hr {
   display: flex;
   gap: 2rem;
 }
-
+.image img {
+  height: 12.7rem;
+  width: 22.4rem;
+  margin: 3rem 0;
+  object-fit: cover;
+}
 @media only screen and (max-width: 992px) {
   form {
     width: 90%;
