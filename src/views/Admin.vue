@@ -1,5 +1,5 @@
 <template>
-  <div class="console">
+  <div class="container">
     <h2>Administradores de la consola</h2>
     <div class="header">
       <div>
@@ -93,11 +93,6 @@ export default {
 </script>
 
 <style scoped>
-.console {
-  width: 100%;
-  height: 100%;
-  padding: 0 2rem;
-}
 .header {
   display: flex;
   justify-content: space-between;

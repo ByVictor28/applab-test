@@ -52,6 +52,6 @@ span {
   margin: 0;
 }
 .box:has(> a.router-link-exact-active) {
-  background: gray;
+  background: rgba(232, 234, 240, 1);
 }
 </style>
