@@ -33,19 +33,25 @@ export default {
 .box {
   display: block;
   width: 100%;
-  padding: 1rem 0;
-  border-top: 1px solid gray;
+  padding: 1.5rem 0;
+  border-top: 1px solid rgba(232, 234, 240, 1);
   padding-left: 4rem;
 }
 span {
   margin: 0 2rem 0 1rem;
 }
 .notification {
-  background: gray;
+  background: #e8f5e9;
   display: inline-block;
   text-align: center;
+  font-size: 1.2rem;
+  padding: 0.5rem;
+  border-radius: 4px;
 }
 .notification span {
   margin: 0;
+}
+.box:has(> a.router-link-exact-active) {
+  background: gray;
 }
 </style>

@@ -1,10 +1,10 @@
 <template>
-  <div class="sidebar">
+  <div class="sidebar" :class="!showSidebar && 'hide-sidebar'">
     <div class="logo">
       <img src="@/assets/images/gli.png" alt="gli logo" />
     </div>
     <div class="content">
-      <SidebarLinkComponent :direction="'#'" :name="'Administradores'">
+      <SidebarLinkComponent direction="Home" :name="'Administradores'">
         <svg
           width="11"
           height="15"
@@ -19,7 +19,7 @@
           />
         </svg>
       </SidebarLinkComponent>
-      <SidebarLinkComponent :direction="'#'" :name="'Catálogos'">
+      <SidebarLinkComponent direction="Working-Catálogos" :name="'Catálogos'">
         <svg
           width="12"
           height="12"
@@ -33,7 +33,7 @@
           />
         </svg>
       </SidebarLinkComponent>
-      <SidebarLinkComponent :direction="'#'" :name="'Líderes'">
+      <SidebarLinkComponent direction="Profile" :name="'Líderes'">
         <svg
           width="16"
           height="11"
@@ -50,7 +50,7 @@
           />
         </svg>
       </SidebarLinkComponent>
-      <SidebarLinkComponent :direction="'#'" :name="'Usuarios'">
+      <SidebarLinkComponent direction="Working-Usuarios" :name="'Usuarios'">
         <svg
           width="13"
           height="13"
@@ -67,7 +67,7 @@
           />
         </svg>
       </SidebarLinkComponent>
-      <SidebarLinkComponent :direction="'#'" :name="'Mi empresa'">
+      <SidebarLinkComponent direction="Working-Mi" :name="'Mi empresa'">
         <svg
           width="16"
           height="11"
@@ -84,7 +84,7 @@
           />
         </svg>
       </SidebarLinkComponent>
-      <SidebarLinkComponent :direction="'#'" :name="'Cursos'">
+      <SidebarLinkComponent direction="Working-Cursos" :name="'Cursos'">
         <svg
           width="13"
           height="14"
@@ -98,7 +98,10 @@
           />
         </svg>
       </SidebarLinkComponent>
-      <SidebarLinkComponent :direction="'#'" :name="'Recompensas'">
+      <SidebarLinkComponent
+        direction="Working-Recompensas"
+        :name="'Recompensas'"
+      >
         <svg
           width="13"
           height="13"
@@ -115,7 +118,7 @@
           />
         </svg>
       </SidebarLinkComponent>
-      <SidebarLinkComponent :direction="'#'" :name="'Eventos'">
+      <SidebarLinkComponent direction="Working-Eventos" :name="'Eventos'">
         <svg
           width="13"
           height="13"
@@ -150,7 +153,7 @@
         </svg>
       </SidebarLinkComponent>
       <SidebarLinkComponent
-        :direction="'#'"
+        direction="Working-Notificaciones"
         :name="'Notificaciones'"
         :notification="2"
       >
@@ -184,7 +187,7 @@
           </defs>
         </svg>
       </SidebarLinkComponent>
-      <SidebarLinkComponent :direction="'#'" :name="'Reportes'">
+      <SidebarLinkComponent direction="Working-Reportes" :name="'Reportes'">
         <svg
           width="16"
           height="11"
@@ -202,8 +205,8 @@
     <div class="footer">
       <div class="help">
         <p>
-          <span>Ir a Sección de ayuda</span>
           <span> ¿Necesitas ayuda? </span>
+          <a class="need-help">Ir a Sección de ayuda</a>
         </p>
         <svg
           width="18"
@@ -222,25 +225,52 @@
       </div>
       <hr />
 
-      <p>© Copyright GLI 2021</p>
+      <p class="copyright">© Copyright GLI 2021</p>
+    </div>
+    <div class="hide-botton" @click="showSidebar = !showSidebar">
+      <svg
+        width="20"
+        height="40"
+        viewBox="0 0 7 10"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          fill-rule="evenodd"
+          clip-rule="evenodd"
+          d="M0.5 8.825L4.10549 5L0.5 1.175L1.60999 0L6.33333 5L1.60999 10L0.5 8.825Z"
+          fill="#ffffff"
+        />
+      </svg>
     </div>
   </div>
 </template>
 
 <script>
 import SidebarLinkComponent from "./SidebarLinkComponent.vue";
-export default { components: { SidebarLinkComponent } };
+export default {
+  components: { SidebarLinkComponent },
+  data() {
+    return {
+      showSidebar: false,
+    };
+  },
+};
 </script>
 
 <style scped>
 .sidebar {
   background: white;
-  width: 25rem;
+  min-width: 25rem;
   height: 100vh;
-  border: 1px solid gray;
+  border: 1px solid rgba(232, 234, 240, 1);
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 1rem;
+  position: relative;
+  transition: left 1s ease;
 }
 .logo {
-  background: red;
   display: flex;
   justify-content: center;
 }
@@ -249,10 +279,12 @@ export default { components: { SidebarLinkComponent } };
   width: 8rem;
   background: white;
   margin: 2.2rem 0;
+  object-fit: contain;
 }
 
 .sidebar a {
   text-decoration: none;
+  color: black;
 }
 
 .footer {
@@ -261,5 +293,46 @@ export default { components: { SidebarLinkComponent } };
 .help {
   background: rgba(232, 234, 240, 1);
   border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1rem;
+  margin-bottom: 2rem;
+}
+.help span {
+  display: block;
+}
+.need-help {
+  text-decoration: underline !important;
+}
+.copyright {
+  text-align: center;
+}
+.hide-botton {
+  position: absolute;
+  top: 2rem;
+  right: -5rem;
+  width: 5rem;
+  height: 6rem;
+  background: rgba(79, 185, 187, 1);
+  border: 1px solid white;
+  color: white;
+  padding: 1rem;
+  cursor: pointer;
+  visibility: hidden;
+}
+@media only screen and (max-width: 600px) {
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 99999;
+  }
+  .hide-botton {
+    visibility: visible;
+  }
+  .hide-sidebar {
+    left: -25rem;
+  }
 }
 </style>

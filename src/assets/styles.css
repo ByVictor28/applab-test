@@ -1,3 +1,7 @@
+/* colors */
+/* 
+green secondary: rgba(79, 185, 187, 1)
+ */
 .qw {
   border: 1px, solid, red;
 }
@@ -28,4 +32,19 @@ p {
 img {
   width: 100%;
   height: 100%;
+}
+
+button {
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+.button-solid {
+  background: rgba(79, 185, 187, 1);
+  color: white;
+}
+.button-outline {
+  background: white;
+  border: 1px solid rgba(79, 185, 187, 1);
 }

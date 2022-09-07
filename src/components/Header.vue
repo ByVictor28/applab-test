@@ -54,7 +54,7 @@ export default {};
   background: rgba(79, 185, 187, 1);
   display: flex;
   height: 8rem;
-  justify-content: end;
+  justify-content: flex-end;
   align-items: center;
   gap: 4rem;
   padding-right: 8rem;
@@ -66,20 +66,17 @@ export default {};
   color: white;
 }
 .logo {
-  width: 4rem;
-  height: 4rem;
-  border-radius: 100%;
-  overflow: hidden;
-  background: white;
   margin-right: 1rem;
 }
 .logo img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
+  width: 5rem;
+  height: 5rem;
+  border-radius: 100%;
+
+  object-fit: contain !important;
 }
 .separator {
-  border: 1px solid rgba(255, 255, 255, 1);
+  border-left: 1px solid rgba(255, 255, 255, 1);
   height: 50%;
 }
 </style>
