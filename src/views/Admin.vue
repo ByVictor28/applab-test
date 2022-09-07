@@ -32,10 +32,22 @@
             <SelectInputComponent
               label="Área"
               :options="['Recursos Humanos', 'Desarrollo', 'Etc']"
+              :value="filters.area"
+              @change="
+                (e) => {
+                  filters.area = e;
+                }
+              "
             />
             <SelectInputComponent
               label="Estatus"
               :options="['Activo', 'Inactivo']"
+              :value="filters.status"
+              @change="
+                (e) => {
+                  filters.status = e;
+                }
+              "
             />
             <hr />
             <div class="buttons">
@@ -87,6 +99,10 @@ export default {
   data() {
     return {
       showFilterMenu: true,
+      filters: {
+        area: "Recursos Humanos",
+        status: "Activo",
+      },
     };
   },
 };
